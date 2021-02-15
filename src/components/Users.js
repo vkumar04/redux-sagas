@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import getUsers from '../redux/actions/userAction';
 
+import Card from './Card';
+
 const Users = () => {
   const users = useSelector((state) => state.userReducer.users);
   const dispatch = useDispatch();
@@ -11,20 +13,38 @@ const Users = () => {
     dispatch(
       getUsers([
         {
-          name: 'Vick',
+          id: 1,
+          name: 'Leanne Graham',
+          username: 'Bret',
+          email: 'Sincere@april.biz',
+          address: {
+            street: 'Kulas Light',
+            suite: 'Apt. 556',
+            city: 'Gwenborough',
+            zipcode: '92998-3874',
+            geo: {
+              lat: '-37.3159',
+              lng: '81.1496',
+            },
+          },
+          phone: '1-770-736-8031 x56442',
+          website: 'hildegard.org',
+          company: {
+            name: 'Romaguera-Crona',
+            catchPhrase: 'Multi-layered client-server neural-net',
+            bs: 'harness real-time e-markets',
+          },
         },
       ]),
     );
   }, []);
 
   return (
-    <>
-      <ul>
-        {users.map((u) => (
-          <li key={u}>{u.name}</li>
-        ))}
-      </ul>
-    </>
+    <div className="container mx-auto">
+      {users.map((u) => (
+        <Card key={u} user={u} />
+      ))}
+    </div>
   );
 };
 
