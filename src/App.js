@@ -2,7 +2,7 @@ import Users from './components/Users';
 
 function App() {
   return (
-    <div className="App">
+    <div className="container-fluid">
       <Users />
     </div>
   );
